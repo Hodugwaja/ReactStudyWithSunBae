@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 
 const EventPractice = () =>{
-    const [username, setUsername] = useState('');
-    const [message, setMessage] = useState('');
-    const onChangeUserName = e => setUsername(e.target.value);
-    const onChangeMessage = e => setMessage(e.target.value);
-
+    const [form, setForm] = useState({
+        username : '',
+        message : ''
+    });
+    const {username, message} = form;
+    const onChange = e => {
+        const nextForm = {
+            ...form, // 기존의 form 내용을 이 자리에서 복사함
+            [e.target.name] : e.target.value /// 원하는 값을 덮어 씌우기
+        };
+        setForm(nextForm);
+    }
     const onClick = () => {
         alert(`${username} : ${message}`);
-        setUsername('');
-        setMessage('');
+        setForm({
+            username : '',
+            message : ''
+        })
     };
 
     const onKeyPress = e => {
@@ -24,12 +33,12 @@ const EventPractice = () =>{
             <input
                 type = "text" name = "username" placeholder = "사용자명"
                 value = {username}
-                onChange = {onChangeUserName}
+                onChange = {onChange}
             />
             <input
                 type = "text" name = "message" placeholder= "무엇이든 말해보세요" 
                 value = {message}
-                onChange ={onChangeMessage}
+                onChange ={onChange}
                 onKeyPress = {onKeyPress}
             />
             <button onClick = {onClick}>확인</button>
@@ -38,3 +47,6 @@ const EventPractice = () =>{
 };
 
 export default EventPractice;
+
+// 문자열 대신 객체로 대체
+// onChange관련 함수를 여러 개 만드는 것도 좋지만 e.target.name 활용이 input이 더 많을 때 더 좋을 수 있음
