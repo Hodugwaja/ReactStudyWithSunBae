@@ -1,9 +1,11 @@
 import React from 'react';
-import ValidationSample from './ValidationSample';
+import ScrollBox from './ScrollBox';
 
 function App() {
   return (
-    <ValidationSample/>
+    <div>
+      <ScrollBox/>
+    </div>
   );
 }
 
