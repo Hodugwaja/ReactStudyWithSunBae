@@ -8,8 +8,6 @@
   }
   
   input {
-    background: border-box;
-    border-top: none;
     width: 200px;
     padding: 5px;
   }

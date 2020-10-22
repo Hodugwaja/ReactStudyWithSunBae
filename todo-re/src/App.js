@@ -10,7 +10,7 @@ const App = ({ deleteAll, persistTodos }) => {
   }, [persistTodos]);
   return (
     <div className="App">
-      <h1> Todo List</h1>
+      <h1> Todo List</h1> 
       <InputField />
       <TodosList />
     </div>
