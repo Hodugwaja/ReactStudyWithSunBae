@@ -9,7 +9,7 @@ class App extends Component {
 
   state = {
     input: '',
-    todos: [' ']
+    todos: ['']
   }
 
   handleChange = (e) => {
@@ -42,7 +42,7 @@ class App extends Component {
     
     const index = todos.findIndex(todo => todo.id === id);
     const selected = todos[index]; 
-
+    
     const nextTodos = [...todos]; 
     
     nextTodos[index] = { 
