@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import "./style.css";
 import InputField from "./components/inputField";
 import TodosList from "./components/TodoList";
-import { persistTodos } from "./redux/action/addTodo-action";
+import { deleteAll, persistTodos } from "./redux/action/addTodo-action";
 import { connect } from "react-redux";
 const App = ({ deleteAll, persistTodos }) => {
   useEffect(() => {
@@ -10,14 +10,24 @@ const App = ({ deleteAll, persistTodos }) => {
   }, [persistTodos]);
   return (
     <div className="App">
-      <h1> Todo List</h1> 
+      <h1 style={{ textDecoration: "underline" }}> Todos App</h1>
       <InputField />
       <TodosList />
+      <div>
+        <button
+          style={{ marginTop: "20px", cursor: "pointer" }}
+          onClick={deleteAll}
+        >
+          {" "}
+          삭제하기
+        </button>
+      </div>
     </div>
   );
 };
 
 const mapDispatchToProps = dispatch => ({
+  deleteAll: () => dispatch(deleteAll()),
   persistTodos: () => dispatch(persistTodos())
 });
 export default connect(
